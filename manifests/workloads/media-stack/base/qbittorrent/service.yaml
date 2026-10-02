@@ -17,6 +17,10 @@ spec:
     app.kubernetes.io/name: qbittorrent
   ports:
     - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+    - name: http-alt
       port: 8085
       targetPort: 8080
       protocol: TCP
