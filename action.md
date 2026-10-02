@@ -231,11 +231,11 @@ ArgoCD_radarr/
   - Ajouter les trackers torrents.
   - Ajouter les applications clientes (Radarr et Sonarr) avec synchronisation automatique.
 - [ ] **Radarr & Sonarr** :
-  - Ajouter le client de téléchargement qBittorrent (`http://qbittorrent.media.svc:8080`).
-  - Définir le répertoire racine de la bibliothèque :
+  - [x] Ajouter le client de téléchargement qBittorrent (`http://qbittorrent.media.svc:8080`).
+  - [ ] Définir le répertoire racine de la bibliothèque :
     - Radarr : `/data/films`
     - Sonarr : `/data/series`
-  - Vérifier que le format d'import est configuré en hardlink.
+  - [ ] Vérifier que le format d'import est configuré en hardlink.
 - [ ] **Jellyseerr** :
   - Se connecter à l'interface `http://192.168.1.160:5055`.
   - Connecter Jellyfin (`http://jellyfin.jellyfin.svc:8096` ou `http://192.168.1.160:8097`).
