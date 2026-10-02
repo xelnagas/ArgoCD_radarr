@@ -261,3 +261,12 @@ kubectl rollout restart deployment/qbittorrent -n media
 ```bash
 kubectl annotate application media-stack -n argocd argocd.argoproj.io/refresh=hard --overwrite
 ```
+
+### Problème de résolution DNS sur les Indexeurs (Erreur "Name does not resolve") :
+En France, les fournisseurs d'accès à Internet (Orange, SFR, Free, Bouygues) bloquent légalement les domaines de torrents (comme `torrent9.la`, `1337x.to`, etc.) par menteur DNS (`NXDOMAIN`).
+Pour contourner ce blocage sans impacter la résolution interne du cluster, CoreDNS est configuré via `manifests/infrastructure/coredns-custom.yaml` pour déléguer les requêtes publiques vers les serveurs DNS de Cloudflare (`1.1.1.1`) et Google (`8.8.8.8`).
+Si un nouveau TLD de tracker est bloqué, appliquez simplement :
+```bash
+kubectl apply -f manifests/infrastructure/coredns-custom.yaml
+kubectl rollout restart deployment/coredns -n kube-system
+```

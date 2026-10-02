@@ -1,0 +1,19 @@
+# ==============================================================================
+# Configuration CoreDNS personnalisée pour contourner le blocage DNS FAI (Orange/SFR/Free/Bouygues)
+# Ce ConfigMap permet à CoreDNS de router les résolutions de trackers vers Cloudflare (1.1.1.1) et Google (8.8.8.8)
+# tout en conservant la résolution interne pour 'cluster.local'
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/name: coredns-custom
+    app.kubernetes.io/part-of: media-stack
+data:
+  trackers.server: |
+    la:53 to:53 me:53 ws:53 cc:53 cx:53 su:53 ch:53 io:53 org:53 net:53 com:53 site:53 uno:53 vg:53 so:53 ac:53 pm:53 re:53 is:53 {
+        forward . 1.1.1.1 1.0.0.1 8.8.8.8
+        cache 30
+    }
