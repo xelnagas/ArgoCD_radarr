@@ -105,8 +105,11 @@ Un Ingress Traefik est également configuré pour les hôtes `*.local` (`jellyse
 
 2. **Radarr & Sonarr** (`:7878` / `:8989`) :
    - Dans *Settings > Download Clients*, ajouter qBittorrent :
-     - Hôte : `qbittorrent.media.svc`
-     - Port : `8080` (port ClusterIP interne)
+     - **Host** : `qbittorrent.media.svc`
+     - **Port** : `8080` (ou `8085`)
+     - **Use SSL** : Décoché
+     - **Username** : `admin`
+     - **Password** : Mot de passe WebUI (temporaire `PcmLU3teF` ou défini dans qBittorrent)
    - Dans *Settings > Media Management*, activer les **Hardlinks**.
    - Chemins racines des médiathèques :
      - Radarr : `/data/films`
