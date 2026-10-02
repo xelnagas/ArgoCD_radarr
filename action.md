@@ -227,9 +227,10 @@ ArgoCD_radarr/
 - [x] Vérifier dans ArgoCD que l'application `media-stack` passe à l'état `Healthy` et `Synced`.
 
 ### Étape 6 : Interconnexion Applicative (Post-Déploiement)
-- [ ] **Prowlarr** :
-  - Ajouter les trackers torrents.
-  - Ajouter les applications clientes (Radarr et Sonarr) avec synchronisation automatique.
+- [x] **Prowlarr** :
+  - [x] Résolution DNS FAI débloquée via CoreDNS (`coredns-custom`).
+  - [x] Ajout des trackers torrents (Torrent9, etc.).
+  - [ ] Ajouter les applications clientes (Radarr et Sonarr) avec synchronisation automatique.
 - [ ] **Radarr & Sonarr** :
   - [x] Ajouter le client de téléchargement qBittorrent (`http://qbittorrent.media.svc:8080`).
   - [ ] Définir le répertoire racine de la bibliothèque :
