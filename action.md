@@ -219,12 +219,12 @@ ArgoCD_radarr/
   ```powershell
   kubectl kustomize manifests/workloads/media-stack/overlays/prod
   ```
-- [ ] Commiter et pousser sur `origin/main`.
-- [ ] Appliquer l'application ArgoCD sur le cluster :
+- [x] Commiter et pousser sur `origin/main`.
+- [x] Appliquer l'application ArgoCD sur le cluster :
   ```bash
   kubectl apply -f apps/workloads/media-stack.yaml
   ```
-- [ ] Vérifier dans ArgoCD que l'application `media-stack` passe à l'état `Healthy` et `Synced`.
+- [x] Vérifier dans ArgoCD que l'application `media-stack` passe à l'état `Healthy` et `Synced`.
 
 ### Étape 6 : Interconnexion Applicative (Post-Déploiement)
 - [ ] **Prowlarr** :
