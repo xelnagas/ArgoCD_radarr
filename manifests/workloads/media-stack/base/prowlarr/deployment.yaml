@@ -35,7 +35,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:1.31.2.4975-ls109
+          image: lscr.io/linuxserver/prowlarr:2.6.5.5623-ls162
           imagePullPolicy: IfNotPresent
           env:
             - name: PUID
