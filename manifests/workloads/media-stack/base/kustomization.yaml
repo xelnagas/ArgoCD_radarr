@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespace.yaml
+  - pv-pvc-media.yaml
+  - pv-pvc-configs.yaml
+  - qbittorrent/deployment.yaml
+  - qbittorrent/service.yaml
+  - prowlarr/deployment.yaml
+  - prowlarr/service.yaml
+  - radarr/deployment.yaml
+  - radarr/service.yaml
+  - sonarr/deployment.yaml
+  - sonarr/service.yaml
+  - jellyseerr/deployment.yaml
+  - jellyseerr/service.yaml
+  - ingress.yaml
+
+commonLabels:
+  app.kubernetes.io/part-of: media-stack
+  app.kubernetes.io/managed-by: argocd

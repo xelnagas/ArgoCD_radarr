@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyseerr
+  namespace: media
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app.kubernetes.io/name: jellyseerr
+    app.kubernetes.io/instance: jellyseerr-prod
+    app.kubernetes.io/component: request-manager
+    app.kubernetes.io/part-of: media-stack
+    app.kubernetes.io/managed-by: argocd
+    env: prod
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jellyseerr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jellyseerr
+        app.kubernetes.io/instance: jellyseerr-prod
+        app.kubernetes.io/component: request-manager
+        app.kubernetes.io/part-of: media-stack
+        app.kubernetes.io/managed-by: argocd
+        env: prod
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: linux2
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: jellyseerr
+          image: fallenbagel/jellyseerr:2.3.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TZ
+              value: Europe/Paris
+            - name: LOG_LEVEL
+              value: "info"
+          ports:
+            - name: http
+              containerPort: 5055
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+          startupProbe:
+            httpGet:
+              path: /api/v1/status
+              port: 5055
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /api/v1/status
+              port: 5055
+            periodSeconds: 15
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/v1/status
+              port: 5055
+            periodSeconds: 10
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: jellyseerr-config-pvc
