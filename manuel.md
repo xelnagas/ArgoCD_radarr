@@ -214,9 +214,11 @@ Grâce à notre architecture :
 ├── download/
 │   ├── torrents/         <-- Fichiers en cours ou en partage (qBittorrent)
 │   └── temp/
-├── films/                <-- Fichiers propres organisés (Radarr & Jellyfin)
-│   └── Inception (2010)/
-│       └── Inception (2010) [1080p].mkv (Même inode que dans /torrents)
+├── films/
+│   ├── new/              <-- Nouveaux films téléchargés (Radarr & Bibliothèque Jellyfin "new films")
+│   │   └── Inception (2010)/
+│   │       └── Inception (2010) [1080p].mkv (Même inode que dans /torrents)
+│   └── ... (anciennes catégories de films)
 ├── series/               <-- Séries organisées (Sonarr & Jellyfin)
 └── k8s-servarr-config/   <-- Bases SQLite & configurations
 ```

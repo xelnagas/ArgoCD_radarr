@@ -241,9 +241,9 @@ ArgoCD_radarr/
   - Se connecter à l'interface `http://192.168.1.160:5055`.
   - Connecter Jellyfin (`http://jellyfin.jellyfin.svc:8096` ou `http://192.168.1.160:8097`).
   - Connecter Radarr et Sonarr.
-- [ ] **Jellyfin** :
-  - Vérifier que la bibliothèque Films scanne bien `/data/stockage/films`.
+- [x] **Jellyfin** :
+  - Bibliothèque "new films" créée, pointant sur `/data/stockage/films/new` (disque physique `/stockage/films/new`).
 
 ### Étape 7 : Test Fonctionnel Complet (End-to-End)
-- [ ] Réaliser une demande de film via Jellyseerr.
-- [ ] Vérifier la transmission vers Radarr, le lancement du téléchargement dans qBittorrent, l'import par hardlink dans `/stockage/films`, et la disponibilité finale dans Jellyfin.
+- [x] Réaliser une demande de film via Jellyseerr.
+- [x] Vérifier la transmission vers Radarr, le lancement du téléchargement dans qBittorrent, l'import par hardlink dans `/stockage/films/new`, et la disponibilité finale dans la bibliothèque "new films" de Jellyfin.
